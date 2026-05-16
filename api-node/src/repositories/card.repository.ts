@@ -25,4 +25,10 @@ export class CardRepository {
     const { rows } = await pool.query(query, [userId, token]);
     return rows[0] || null;
   }
+
+  async findById(id: string): Promise<Card | null> {
+    const query = 'SELECT * FROM cards WHERE id = $1;';
+    const { rows } = await pool.query(query, [id]);
+    return rows[0] || null;
+  }
 }

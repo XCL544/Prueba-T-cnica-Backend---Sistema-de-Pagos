@@ -42,3 +42,12 @@ export const isValidLastFour = (lastFour: string): boolean => {
 export const isValidBrand = (brand: string): boolean => {
   return brand.trim().length > 0 && brand.length <= 20;
 };
+
+// Payment Validators
+export const isValidAmount = (amount: number): boolean => {
+  return typeof amount === 'number' && amount > 0;
+};
+
+export const isValidCurrency = (currency: string): boolean => {
+  return typeof currency === 'string' && currency.length === 3;
+};

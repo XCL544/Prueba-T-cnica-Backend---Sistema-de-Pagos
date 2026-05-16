@@ -1,6 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { userRoutes } from './user.routes';
 import { cardRoutes } from './card.routes';
+import { paymentRoutes } from './payment.routes';
 import { pool } from '../config/database';
 import { NotFoundException } from '../exceptions/app.exceptions';
 
@@ -27,6 +28,10 @@ export const router = async (req: IncomingMessage, res: ServerResponse) => {
 
   // Card Routes
   handled = await cardRoutes(req, res);
+  if (handled) return;
+
+  // Payment Routes
+  handled = await paymentRoutes(req, res);
   if (handled) return;
 
   // If no route matches
