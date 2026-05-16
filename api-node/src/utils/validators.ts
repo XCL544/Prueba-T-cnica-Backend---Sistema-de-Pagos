@@ -18,3 +18,27 @@ export const isValidPassword = (password: string): boolean => {
 
   return hasUppercase && hasLowercase && hasNumber && hasSymbol;
 };
+
+// Card Validators
+export const isValidUUID = (uuid: string): boolean => {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(uuid);
+};
+
+export const isValidExpMonth = (month: number): boolean => {
+  return Number.isInteger(month) && month >= 1 && month <= 12;
+};
+
+export const isValidExpYear = (year: number): boolean => {
+  const currentYear = new Date().getFullYear();
+  return Number.isInteger(year) && year >= currentYear && year <= currentYear + 20;
+};
+
+export const isValidLastFour = (lastFour: string): boolean => {
+  const lastFourRegex = /^[0-9]{4}$/;
+  return lastFourRegex.test(lastFour);
+};
+
+export const isValidBrand = (brand: string): boolean => {
+  return brand.trim().length > 0 && brand.length <= 20;
+};

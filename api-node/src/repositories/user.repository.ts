@@ -18,4 +18,10 @@ export class UserRepository {
     const { rows } = await pool.query(query, [email]);
     return rows[0] || null;
   }
+
+  async findById(id: string): Promise<User | null> {
+    const query = 'SELECT * FROM users WHERE id = $1;';
+    const { rows } = await pool.query(query, [id]);
+    return rows[0] || null;
+  }
 }
