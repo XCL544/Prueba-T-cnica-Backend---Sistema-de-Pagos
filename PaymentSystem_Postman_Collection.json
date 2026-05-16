@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "b3e34a7a-6b8a-4c22-b5e1-7e8c3b9b4a12",
+		"name": "Payment System API",
+		"description": "Colección completa para probar el Sistema de Pagos Node.js + Python",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"full_name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"SecurePass123!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Register Card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"REEMPLAZA_CON_EL_UUID_DEL_USUARIO_CREADO\",\n    \"token\": \"tok_visa123456\",\n    \"brand\": \"Visa\",\n    \"last_four\": \"4242\",\n    \"exp_month\": 12,\n    \"exp_year\": 2028\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Create Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"REEMPLAZA_CON_EL_UUID_DEL_USUARIO_CREADO\",\n    \"card_id\": \"REEMPLAZA_CON_EL_UUID_DE_LA_TARJETA_CREADA\",\n    \"amount\": 150.50,\n    \"currency\": \"USD\",\n    \"description\": \"Pago de mensualidad\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Get User Payments History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/payments/REEMPLAZA_CON_EL_UUID_DEL_USUARIO_CREADO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"payments",
+						"REEMPLAZA_CON_EL_UUID_DEL_USUARIO_CREADO"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
